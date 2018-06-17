@@ -1,0 +1,10 @@
+<div class="card m-2">
+    <div class="card-body">
+      <select [(ngModel)]="customer">
+        <option [ngValue]="null">no client</option>
+        <option *ngFor="let c of customers" [ngValue]="c">{{ c.name }}</option>
+      </select>
+    </div>
+    <app-customer-details [customer]="customer"></app-customer-details>
+  </div>
+

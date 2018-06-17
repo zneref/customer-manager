@@ -1,26 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      <h1 [style.color]= "fontColor" [class.isActive] = "isActive">
-        Welcome here, {{ customer.name.toUpperCase() }}!
-      </h1>
-    </div>
-    <div class="card-body">
-      <div class ="row">
-        <div class="col-sm-8">
-          <p>{{ customer.description }}</p>
-          <p>age: {{ customer.age }}</p>
-          <p>Address: {{customer.address.street }}, {{customer.address.houseNumber}}, {{customer.address.city}}</p>
-          <button class="btn btn-primary" (click) = "changeIsActive()" type="button">Switch underline</button>
-          <button class="btn btn-primary" (click) = "changeFontColor()" type="button">Switch color</button>
-          <input type="text" [(ngModel)] = "customer.name">
-        </div>
-        <div class="col-sm-4">
-          <img [src]= "customer.photoUrl" />
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-customer-browser></app-customer-browser>
 </div>
 
