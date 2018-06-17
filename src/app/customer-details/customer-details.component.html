@@ -1,36 +1,43 @@
-<div class="card m-2" *ngIf="customer">
-    <div class="card-header">
-      <h1 [style.color]= "fontColor" [class.isActive] = "isActive">
-        {{ customer.name.toUpperCase() }}
-        <ng-container [ngSwitch]="customer.type">
-          <ng-container *ngSwitchCase="CustomerType.Standard">*</ng-container>
-          <ng-container *ngSwitchCase="CustomerType.Premium">**</ng-container>
-          <ng-container *ngSwitchCase="CustomerType.VIP">***</ng-container>
-          <ng-container *ngSwitchDefault>type undefined</ng-container>
-        </ng-container>
-      </h1>
-    </div>
-    <div class="card-body">
-      <div class ="row">
-        <div class="col-sm-8">
-          <p>
-            <span class="m-1 badge" *ngFor="let category of customer.categories; let oddCategory = odd" [class.badge-success]="oddCategory" [class.badge-danger]="!oddCategory">
-              {{ category }}
-            </span>
-          </p>
-          <p appHighlight>{{ customer.description }}</p>
-          <p>age: {{ customer.age }}</p>
-          <p>Address: {{customer.address.street }}, {{customer.address.houseNumber}}, {{customer.address.city}}</p>
-          <button class="btn btn-primary m-1" (click) = "changeIsActive()" type="button">Switch underline</button>
-          <button class="btn btn-primary m-1" (click) = "changeFontColor()" type="button">Switch color</button>
-          <input class="form-control m-1" type="text" [(ngModel)] = "customer.name">
-        </div>
-        <div class="col-sm-4">
-          <div *ngIf="showPhoto; then photo else noPhoto"></div>
-          <ng-template #photo><img [src]= "customer.photoUrl" /></ng-template>
-          <ng-template #noPhoto><p></p>photo hidden</ng-template>
-          <div class="checkbox"><input type="checkbox" [(ngModel)]="showPhoto">Show photo</div>
-        </div>
+<div class="card m-2">
+  <div class="card-header">
+    <h1 [style.color]="fontColor" [class.isActive]="isActive">
+      <button type="button" (click)="left()">&lt;</button>
+      {{ customer.name.toUpperCase() }}
+      <ng-container [ngSwitch]="customer.type">
+        <ng-container *ngSwitchCase="CustomerType.Standard">*</ng-container>
+        <ng-container *ngSwitchCase="CustomerType.Premium">**</ng-container>
+        <ng-container *ngSwitchCase="CustomerType.VIP">***</ng-container>
+        <ng-container *ngSwitchDefault>type undefined</ng-container>
+      </ng-container>
+      <button type="button" (click)="right()">&gt;</button>
+    </h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-8">
+        <p>
+          <span class="m-1 badge" *ngFor="let category of customer.categories; let oddCategory = odd" [class.badge-success]="oddCategory"
+            [class.badge-danger]="!oddCategory">
+            {{ category }}
+          </span>
+        </p>
+        <p appHighlight>{{ customer.description }}</p>
+        <p>age: {{ customer.age }}</p>
+        <p>Address: {{customer.address.street }}, {{customer.address.houseNumber}}, {{customer.address.city}}</p>
+        <button class="btn btn-primary m-1" (click)="changeIsActive()" type="button">Switch underline</button>
+        <button class="btn btn-primary m-1" (click)="changeFontColor()" type="button">Switch color</button>
+        <input class="form-control m-1" type="text" [(ngModel)]="customer.name">
+      </div>
+      <div class="col-sm-4">
+        <div *ngIf="showPhoto; then photo else noPhoto"></div>
+        <ng-template #photo>
+          <img [src]="customer.photoUrl" />
+        </ng-template>
+        <ng-template #noPhoto>
+          <p></p>photo hidden</ng-template>
+        <div class="checkbox">
+          <input type="checkbox" [(ngModel)]="showPhoto">Show photo</div>
       </div>
     </div>
   </div>
+</div>
