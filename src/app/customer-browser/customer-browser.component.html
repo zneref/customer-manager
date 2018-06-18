@@ -4,6 +4,7 @@
         <option [ngValue]="null">no client</option>
         <option *ngFor="let c of customers" [ngValue]="c">{{ c.name }}</option>
       </select>
+      <button class="btn btn-primary m-1" (click)="deleteCustomer()" type="button">Delete customer</button>
     </div>
     <div  *ngIf="customer">
       <app-customer-details [customer]="customer" (shift)=onShift($event)></app-customer-details>

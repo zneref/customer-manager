@@ -13,6 +13,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { CustomerService } from './customer.service';
 import { Config, CONFIG } from './model';
 import { MessageService } from './message.service';
+import { CustomerAddComponent } from './customer-add/customer-add.component';
 
 
 const config: Config = {
@@ -25,7 +26,8 @@ const config: Config = {
     AppComponent,
     HighlightDirective,
     CustomerBrowserComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    CustomerAddComponent
   ],
   imports: [
     BrowserModule,

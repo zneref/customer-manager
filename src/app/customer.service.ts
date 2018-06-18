@@ -18,4 +18,8 @@ export class CustomerService {
   getCustomers() {
     return this.httpClient.get<Customer[]>(`${this.config.apiUrl}/customers`).map(customers => customers.slice(0, this.config.customerLimit));
   }
+
+  deleteCustomer(customer: Customer) {
+    return this.httpClient.delete(`${this.config.apiUrl}/customers/${customer.id}`)
+  }
 }
